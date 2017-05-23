@@ -1,0 +1,601 @@
+{
+  "swagger1" : "2.0",
+  "info" : {
+    "description" : "",
+    "version" : "1.1.0",
+    "title" : "testgeneration",
+    "contact" : {
+      "name" : "Thierry Templier",
+      "email" : "ttemplier@restlet.com"
+    }
+  },
+  "host1" : "testgeneration.apihive.com",
+  "basePath" : "/v1",
+  "tags1" : [ {
+    "name" : "testgeneration_Data",
+    "description" : "Imported from testgeneration_Data"
+  }, {
+    "name" : "Default",
+    "description" : "Default section"
+  } ],
+  "schemes1" : [ "https" ],
+  "paths" : {
+    "/companies/" : {
+      "get" : {
+        "tags1" : [ "testgeneration_Data" ],
+        "consumes1" : [ ],
+        "produces1" : [ "application/json", "application/x-yaml", "application/xml", "text/xml" ],
+        "parameters1" : [ {
+          "name" : "name",
+          "in" : "query",
+          "description" : "Allows to filter the collections of result by the value of field name",
+          "required" : false,
+          "type" : "string",
+          "x-example" : "sample name"
+        }, {
+          "name" : "$sort",
+          "in" : "query",
+          "description" : "Order in which to retrieve the results. Multiple sort criteria can be passed. Example: sort=age ASC,height DESC",
+          "required" : false,
+          "type" : "string",
+          "x-example" : "sample $sort"
+        }, {
+          "name" : "$page",
+          "in" : "query",
+          "description" : "Number of the page to retrieve. Integer value.",
+          "required" : false,
+          "type" : "string",
+          "x-example" : "sample $page"
+        }, {
+          "name" : "$size",
+          "in" : "query",
+          "description" : "Size of the page to retrieve. Integer value",
+          "required" : false,
+          "type" : "string",
+          "x-example" : "sample $size"
+        }, {
+          "name" : "id",
+          "in" : "query",
+          "description" : "Allows to filter the collections of result by the value of field id",
+          "required" : false,
+          "type" : "string",
+          "x-example" : "sample id"
+        }, {
+          "name" : "tags",
+          "in" : "query",
+          "description" : "Allows to filter the collections of result by the value of field tags",
+          "required" : false,
+          "type" : "string",
+          "x-example" : "sample tags"
+        } ],
+        "responses1" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Company"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Error 400"
+          }
+        },
+        "security" : [ {
+          "HTTP_BASIC" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags1" : [ "testgeneration_Data" ],
+        "summary1" : "Adds a Company",
+        "description1" : "Adds a Company",
+        "operationId1" : "postCompanies",
+        "consumes1" : [ "application/json", "application/x-yaml", "application/xml", "text/xml" ],
+        "produces1" : [ "application/json", "application/x-yaml", "application/xml", "text/xml" ],
+        "parameters1" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Company"
+          }
+        } ],
+        "responses1" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/Company"
+            }
+          }
+        },
+        "security1" : [ {
+          "HTTP_BASIC" : [ ]
+        } ]
+      }
+    },
+    "/companies/{companyid}" : {
+      "get" : {
+        "tags1" : [ "testgeneration_Data" ],
+        "summary1" : "Loads a Company",
+        "description1" : "Loads a Company",
+        "operationId1" : "getCompaniesCompanyid",
+        "consumes1" : [ ],
+        "produces1" : [ "application/json", "application/x-yaml", "application/xml", "text/xml" ],
+        "parameters1" : [ {
+          "name" : "companyid",
+          "in" : "path",
+          "description" : "Identifier of the Company",
+          "required" : true,
+          "type" : "string",
+          "x-example" : "sample companyid"
+        } ],
+        "responses1" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/Company"
+            }
+          },
+          "400" : {
+            "description" : "Error 400"
+          }
+        },
+        "security1" : [ {
+          "HTTP_BASIC" : [ ]
+        } ]
+      },
+      "put" : {
+        "tags" : [ "testgeneration_Data" ],
+        "summary" : "Stores a Company",
+        "description" : "Stores a Company",
+        "operationId" : "putCompaniesCompanyid",
+        "consumes" : [ "application/json", "application/x-yaml", "application/xml", "text/xml" ],
+        "produces" : [ "application/json", "application/x-yaml", "application/xml", "text/xml" ],
+        "parameters" : [ {
+          "name" : "companyid",
+          "in" : "path",
+          "description" : "Identifier of the Company",
+          "required" : true,
+          "type" : "string",
+          "x-example" : "sample companyid"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Company"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/Company"
+            }
+          }
+        },
+        "security" : [ {
+          "HTTP_BASIC" : [ ]
+        } ]
+      },
+      "delete" : {
+        "tags" : [ "testgeneration_Data" ],
+        "summary" : "Deletes a Company",
+        "description" : "Deletes a Company",
+        "operationId" : "deleteCompaniesCompanyid",
+        "consumes" : [ ],
+        "produces" : [ ],
+        "parameters" : [ {
+          "name" : "companyid",
+          "in" : "path",
+          "description" : "Identifier of the Company",
+          "required" : true,
+          "type" : "string",
+          "x-example" : "sample companyid"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success"
+          }
+        },
+        "security" : [ {
+          "HTTP_BASIC" : [ ]
+        } ]
+      }
+    },
+    "/contacts/" : {
+      "get" : {
+        "tags" : [ "testgeneration_Data" ],
+        "summary" : "Loads a list of Contact",
+        "description" : "Loads a list of Contact",
+        "operationId" : "getContacts",
+        "consumes" : [ ],
+        "produces" : [ "application/json", "application/x-yaml", "application/xml", "text/xml" ],
+        "parameters" : [ {
+          "name" : "company",
+          "in" : "query",
+          "description" : "Allows to filter the collections of result by the value of field company",
+          "required" : false,
+          "type" : "string",
+          "x-example" : "sample company"
+        }, {
+          "name" : "active",
+          "in" : "query",
+          "description" : "Allows to filter the collections of result by the value of field active",
+          "required" : false,
+          "type" : "string",
+          "x-example" : "sample active"
+        }, {
+          "name" : "lastName",
+          "in" : "query",
+          "description" : "Allows to filter the collections of result by the value of field lastName",
+          "required" : false,
+          "type" : "string",
+          "x-example" : "sample lastName"
+        }, {
+          "name" : "$page",
+          "in" : "query",
+          "description" : "Number of the page to retrieve. Integer value.",
+          "required" : false,
+          "type" : "string",
+          "x-example" : "sample $page"
+        }, {
+          "name" : "id",
+          "in" : "query",
+          "description" : "Allows to filter the collections of result by the value of field id",
+          "required" : false,
+          "type" : "string",
+          "x-example" : "sample id"
+        }, {
+          "name" : "rank",
+          "in" : "query",
+          "description" : "Allows to filter the collections of result by the value of field rank",
+          "required" : false,
+          "type" : "string",
+          "x-example" : "sample rank"
+        }, {
+          "name" : "$sort",
+          "in" : "query",
+          "description" : "Order in which to retrieve the results. Multiple sort criteria can be passed. Example: sort=age ASC,height DESC",
+          "required" : false,
+          "type" : "string",
+          "x-example" : "sample $sort"
+        }, {
+          "name" : "$size",
+          "in" : "query",
+          "description" : "Size of the page to retrieve. Integer value",
+          "required" : false,
+          "type" : "string",
+          "x-example" : "sample $size"
+        }, {
+          "name" : "birthday",
+          "in" : "query",
+          "description" : "Allows to filter the collections of result by the value of field birthday",
+          "required" : false,
+          "type" : "string",
+          "x-example" : "sample birthday"
+        }, {
+          "name" : "firstName",
+          "in" : "query",
+          "description" : "Allows to filter the collections of result by the value of field firstName",
+          "required" : false,
+          "type" : "string",
+          "x-example" : "sample firstName"
+        } ],
+        "responses1" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Contact"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Error 400"
+          }
+        },
+        "security" : [ {
+          "HTTP_BASIC" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "testgeneration_Data" ],
+        "summary" : "Adds a Contact",
+        "description" : "Adds a Contact",
+        "operationId" : "postContacts",
+        "consumes" : [ "application/json", "application/x-yaml", "application/xml", "text/xml" ],
+        "produces" : [ "application/json", "application/x-yaml", "application/xml", "text/xml" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Contact"
+          }
+        } ],
+        "responses1" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/Contact"
+            }
+          }
+        },
+        "security" : [ {
+          "HTTP_BASIC" : [ ]
+        } ]
+      }
+    },
+    "/contacts/{contactid}" : {
+      "get" : {
+        "tags" : [ "testgeneration_Data" ],
+        "summary" : "Loads a Contact",
+        "description" : "Loads a Contact",
+        "operationId" : "getContactsContactid",
+        "consumes" : [ ],
+        "produces" : [ "application/json", "application/x-yaml", "application/xml", "text/xml" ],
+        "parameters" : [ {
+          "name" : "contactid",
+          "in" : "path",
+          "description" : "Identifier of the Contact",
+          "required" : true,
+          "type" : "string",
+          "x-example" : "sample contactid"
+        } ],
+        "responses1" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/Contact"
+            }
+          },
+          "400" : {
+            "description" : "Error 400"
+          }
+        },
+        "security" : [ {
+          "HTTP_BASIC" : [ ]
+        } ]
+      },
+      "put" : {
+        "tags" : [ "testgeneration_Data" ],
+        "summary" : "Stores a Contact",
+        "description" : "Stores a Contact",
+        "operationId" : "putContactsContactid",
+        "consumes" : [ "application/json", "application/x-yaml", "application/xml", "text/xml" ],
+        "produces" : [ "application/json", "application/x-yaml", "application/xml", "text/xml" ],
+        "parameters" : [ {
+          "name" : "contactid",
+          "in" : "path",
+          "description" : "Identifier of the Contact",
+          "required" : true,
+          "type" : "string",
+          "x-example" : "sample contactid"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Contact"
+          }
+        } ],
+        "responses1" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/Contact"
+            }
+          }
+        },
+        "security" : [ {
+          "HTTP_BASIC" : [ ]
+        } ]
+      },
+      "delete" : {
+        "tags" : [ "testgeneration_Data" ],
+        "summary" : "Deletes a Contact",
+        "description" : "Deletes a Contact",
+        "operationId" : "deleteContactsContactid",
+        "consumes" : [ ],
+        "produces" : [ ],
+        "parameters" : [ {
+          "name" : "contactid",
+          "in" : "path",
+          "description" : "Identifier of the Contact",
+          "required" : true,
+          "type" : "string",
+          "x-example" : "sample contactid"
+        } ],
+        "responses1" : {
+          "200" : {
+            "description" : "Success"
+          }
+        },
+        "security" : [ {
+          "HTTP_BASIC" : [ ]
+        } ]
+      }
+    },
+    "/contacts1/{contactid}" : {
+      "get" : {
+        "tags" : [ "testgeneration_Data" ],
+        "summary" : "Loads a Contact",
+        "description" : "Loads a Contact",
+        "operationId" : "getContactsContactid",
+        "consumes" : [ ],
+        "produces" : [ "application/json", "application/x-yaml", "application/xml", "text/xml" ],
+        "parameters" : [ {
+          "name" : "contactid",
+          "in" : "path",
+          "description" : "Identifier of the Contact",
+          "required" : true,
+          "type" : "string",
+          "x-example" : "sample contactid"
+        } ],
+        "responses1" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/Contact"
+            }
+          },
+          "400" : {
+            "description" : "Error 400"
+          }
+        },
+        "security" : [ {
+          "HTTP_BASIC" : [ ]
+        } ]
+      },
+      "put" : {
+        "tags" : [ "testgeneration_Data" ],
+        "summary" : "Stores a Contact",
+        "description" : "Stores a Contact",
+        "operationId" : "putContactsContactid",
+        "consumes" : [ "application/json", "application/x-yaml", "application/xml", "text/xml" ],
+        "produces" : [ "application/json", "application/x-yaml", "application/xml", "text/xml" ],
+        "parameters" : [ {
+          "name" : "contactid",
+          "in" : "path",
+          "description" : "Identifier of the Contact",
+          "required" : true,
+          "type" : "string",
+          "x-example" : "sample contactid"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Contact"
+          }
+        } ],
+        "responses1" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/Contact"
+            }
+          }
+        },
+        "security" : [ {
+          "HTTP_BASIC" : [ ]
+        } ]
+      },
+      "delete" : {
+        "tags" : [ "testgeneration_Data" ],
+        "summary" : "Deletes a Contact",
+        "description" : "Deletes a Contact",
+        "operationId" : "deleteContactsContactid",
+        "consumes" : [ ],
+        "produces" : [ ],
+        "parameters" : [ {
+          "name" : "contactid",
+          "in" : "path",
+          "description" : "Identifier of the Contact",
+          "required" : true,
+          "type" : "string",
+          "x-example" : "sample contactid"
+        } ],
+        "responses1" : {
+          "200" : {
+            "description" : "Success"
+          }
+        },
+        "security" : [ {
+          "HTTP_BASIC" : [ ]
+        } ]
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "HTTP_BASIC" : {
+      "type" : "basic"
+    }
+  },
+  "definitions" : {
+    "Company" : {
+      "type" : "object",
+      "required" : [ "address", "id", "name" ],
+      "properties" : {
+        "address" : {
+          "type" : "object",
+          "properties" : {
+            "city" : {
+              "type" : "string",
+              "example" : "sample city"
+            },
+            "street" : {
+              "type" : "string",
+              "example" : "sample street"
+            },
+            "zipcode" : {
+              "type" : "string",
+              "example" : "sample zipcode"
+            }
+          },
+          "required" : [ "city", "street", "zipcode" ]
+        },
+        "id" : {
+          "type" : "string",
+          "example" : "sample id",
+          "description" : "Auto-generated primary key field"
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "sample name"
+        },
+        "tags" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "example" : "sample tags"
+          }
+        }
+      },
+      "example" : "{\"id\":\"sample id\",\"name\":\"sample name\",\"tags\":[\"sample tags\"],\"address\":{\"address\":\"sample city\"}}"
+    },
+    "Contact" : {
+      "type" : "object",
+      "required" : [ "firstName", "id", "lastName" ],
+      "properties" : {
+        "active" : {
+          "type" : "boolean",
+          "example" : false,
+          "default" : false
+        },
+        "birthday" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 123456789
+        },
+        "company" : {
+          "type" : "string",
+          "example" : "sample company",
+          "description" : "This property is a reference to a Company"
+        },
+        "firstName" : {
+          "type" : "string",
+          "example" : "sample firstName"
+        },
+        "id" : {
+          "type" : "string",
+          "example" : "sample id",
+          "description" : "Auto-generated primary key field"
+        },
+        "lastName" : {
+          "type" : "string",
+          "example" : "sample lastName"
+        },
+        "rank" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1
+        }
+      },
+      "example" : "{\"id\":\"sample id\",\"firstName\":\"sample firstName\",\"lastName\":\"sample lastName\",\"birthday\":123456789,\"active\":false,\"rank\":1,\"company\":\"sample company\"}"
+    }
+  }
+}
