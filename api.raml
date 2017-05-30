@@ -1,0 +1,544 @@
+#%RAML 0.8
+title: angular2
+version: "1.5.0"
+baseUri: "https://angular2.restlet.net/v1"
+schemas: 
+    - 
+        Company: '{"type":"object","$schema":"http://json-schema.org/draft-03/schema#","title":"Company","properties":{"id":{"type":"string","required":true,"title":"id"},"name":{"type":"string","required":true,"title":"name"},"tags":{"type":"array","required":false,"title":"tags","items":{"type":"string","title":"tags"},"uniqueItems":false},"address":{"type":"object","properties":{"street":{"type":"string","required":true,"title":"street"},"zipcode":{"type":"string","required":true,"title":"zipcode"},"city":{"type":"string","required":true,"title":"city"}}}}}'
+    - 
+        Contact: '{"type":"object","$schema":"http://json-schema.org/draft-03/schema#","title":"Contact","properties":{"id":{"type":"string","required":true,"title":"id"},"firstName":{"type":"string","required":true,"title":"firstName"},"lastName":{"type":"string","required":true,"title":"lastName"},"birthday":{"type":"integer","required":false,"title":"birthday"},"active":{"type":"boolean","required":false,"title":"active"},"rank":{"type":"integer","required":false,"title":"rank"},"company":{"type":"string","required":false,"title":"company"}}}'
+    - 
+        FolderListRepresentation: '{"type":"object","$schema":"http://json-schema.org/draft-03/schema#","title":"FolderListRepresentation","properties":{"list":{"type":"array","required":false,"title":"list","items":{"type":"object","$ref":"#/schemas/FolderRepresentation"},"uniqueItems":false}}}'
+    - 
+        FolderRepresentation: '{"type":"object","$schema":"http://json-schema.org/draft-03/schema#","title":"FolderRepresentation","properties":{"directory":{"type":"boolean","required":false,"title":"directory"},"name":{"type":"string","required":false,"title":"name"},"mediaType":{"type":"string","required":false,"title":"mediaType"}}}'
+    - 
+        filesFileRepresentation: '{"type":"object","$schema":"http://json-schema.org/draft-03/schema#","title":"filesFileRepresentation"}'
+securitySchemes: 
+    - 
+        HTTP_BASIC: 
+            type: Basic Authentication
+/companies/: 
+    displayName: CompanyList
+    get: 
+        description: Loads a list of Company
+        queryParameters: 
+            name: 
+                displayName: name
+                description: Allows to filter the collections of result by the value of field name
+                type: string
+                required: false
+                repeat: false
+                example: sample name
+            "$page": 
+                displayName: "$page"
+                description: Number of the page to retrieve. Integer value.
+                type: string
+                required: false
+                repeat: false
+                example: sample $page
+            "$sort": 
+                displayName: "$sort"
+                description: "Order in which to retrieve the results. Multiple sort criteria can be passed. Example: sort=age ASC,height DESC"
+                type: string
+                required: false
+                repeat: false
+                example: sample $sort
+            tags: 
+                displayName: tags
+                description: Allows to filter the collections of result by the value of field tags
+                type: string
+                required: false
+                repeat: false
+                example: sample tags
+            "$size": 
+                displayName: "$size"
+                description: Size of the page to retrieve. Integer value
+                type: string
+                required: false
+                repeat: false
+                example: sample $size
+            id: 
+                displayName: id
+                description: Allows to filter the collections of result by the value of field id
+                type: string
+                required: false
+                repeat: false
+                example: sample id
+        responses: 
+            "200": 
+                body: 
+                    application/json: 
+                        schema: Company
+                        example: '[{"id":"sample id","name":"sample name","tags":["sample tags"],"address":{"street":"sample street","zipcode":"sample zipcode","city":"sample city"}}]'
+                    application/x-yaml: 
+                        schema: Company
+                        example: |
+                            ---
+                            - id: "sample id"
+                              name: "sample name"
+                              tags:
+                              - "sample tags"
+                              address:
+                                street: "sample street"
+                                zipcode: "sample zipcode"
+                                city: "sample city"
+                    application/xml: 
+                        schema: Company
+                        example: '<SingletonList xmlns=""><item><id>sample id</id><name>sample name</name><tags>sample tags</tags><address><street>sample street</street><zipcode>sample zipcode</zipcode><city>sample city</city></address></item></SingletonList>'
+                    text/xml: 
+                        schema: Company
+                        example: '<SingletonList xmlns=""><item><id>sample id</id><name>sample name</name><tags>sample tags</tags><address><street>sample street</street><zipcode>sample zipcode</zipcode><city>sample city</city></address></item></SingletonList>'
+            "400": 
+        securedBy: 
+            - 
+                HTTP_BASIC
+    post: 
+        description: Adds a Company
+        body: 
+            application/json: 
+                schema: Company
+                example: '{"id":"sample id","name":"sample name","tags":["sample tags"],"address":{"street":"sample street","zipcode":"sample zipcode","city":"sample city"}}'
+            application/x-yaml: 
+                schema: Company
+                example: |
+                    ---
+                    id: "sample id"
+                    name: "sample name"
+                    tags:
+                    - "sample tags"
+                    address:
+                      street: "sample street"
+                      zipcode: "sample zipcode"
+                      city: "sample city"
+            application/xml: 
+                schema: Company
+                example: '<Company xmlns=""><id>sample id</id><name>sample name</name><tags>sample tags</tags><address><street>sample street</street><zipcode>sample zipcode</zipcode><city>sample city</city></address></Company>'
+            text/xml: 
+                schema: Company
+                example: '<Company xmlns=""><id>sample id</id><name>sample name</name><tags>sample tags</tags><address><street>sample street</street><zipcode>sample zipcode</zipcode><city>sample city</city></address></Company>'
+        responses: 
+            "200": 
+                body: 
+                    application/json: 
+                        schema: Company
+                        example: '{"id":"sample id","name":"sample name","tags":["sample tags"],"address":{"street":"sample street","zipcode":"sample zipcode","city":"sample city"}}'
+                    application/x-yaml: 
+                        schema: Company
+                        example: |
+                            ---
+                            id: "sample id"
+                            name: "sample name"
+                            tags:
+                            - "sample tags"
+                            address:
+                              street: "sample street"
+                              zipcode: "sample zipcode"
+                              city: "sample city"
+                    application/xml: 
+                        schema: Company
+                        example: '<Company xmlns=""><id>sample id</id><name>sample name</name><tags>sample tags</tags><address><street>sample street</street><zipcode>sample zipcode</zipcode><city>sample city</city></address></Company>'
+                    text/xml: 
+                        schema: Company
+                        example: '<Company xmlns=""><id>sample id</id><name>sample name</name><tags>sample tags</tags><address><street>sample street</street><zipcode>sample zipcode</zipcode><city>sample city</city></address></Company>'
+        securedBy: 
+            - 
+                HTTP_BASIC
+/companies/{companyid}: 
+    displayName: Company
+    uriParameters: 
+        companyid: 
+            displayName: companyid
+            description: Identifier of the Company
+            type: string
+            required: false
+            repeat: false
+            example: sample companyid
+    get: 
+        description: Loads a Company
+        responses: 
+            "200": 
+                body: 
+                    application/json: 
+                        schema: Company
+                        example: '{"id":"sample id","name":"sample name","tags":["sample tags"],"address":{"street":"sample street","zipcode":"sample zipcode","city":"sample city"}}'
+                    application/x-yaml: 
+                        schema: Company
+                        example: |
+                            ---
+                            id: "sample id"
+                            name: "sample name"
+                            tags:
+                            - "sample tags"
+                            address:
+                              street: "sample street"
+                              zipcode: "sample zipcode"
+                              city: "sample city"
+                    application/xml: 
+                        schema: Company
+                        example: '<Company xmlns=""><id>sample id</id><name>sample name</name><tags>sample tags</tags><address><street>sample street</street><zipcode>sample zipcode</zipcode><city>sample city</city></address></Company>'
+                    text/xml: 
+                        schema: Company
+                        example: '<Company xmlns=""><id>sample id</id><name>sample name</name><tags>sample tags</tags><address><street>sample street</street><zipcode>sample zipcode</zipcode><city>sample city</city></address></Company>'
+            "400": 
+        securedBy: 
+            - 
+                HTTP_BASIC
+    put: 
+        description: Stores a Company
+        body: 
+            application/json: 
+                schema: Company
+                example: '{"id":"sample id","name":"sample name","tags":["sample tags"],"address":{"street":"sample street","zipcode":"sample zipcode","city":"sample city"}}'
+            application/x-yaml: 
+                schema: Company
+                example: |
+                    ---
+                    id: "sample id"
+                    name: "sample name"
+                    tags:
+                    - "sample tags"
+                    address:
+                      street: "sample street"
+                      zipcode: "sample zipcode"
+                      city: "sample city"
+            application/xml: 
+                schema: Company
+                example: '<Company xmlns=""><id>sample id</id><name>sample name</name><tags>sample tags</tags><address><street>sample street</street><zipcode>sample zipcode</zipcode><city>sample city</city></address></Company>'
+            text/xml: 
+                schema: Company
+                example: '<Company xmlns=""><id>sample id</id><name>sample name</name><tags>sample tags</tags><address><street>sample street</street><zipcode>sample zipcode</zipcode><city>sample city</city></address></Company>'
+        responses: 
+            "200": 
+                body: 
+                    application/json: 
+                        schema: Company
+                        example: '{"id":"sample id","name":"sample name","tags":["sample tags"],"address":{"street":"sample street","zipcode":"sample zipcode","city":"sample city"}}'
+                    application/x-yaml: 
+                        schema: Company
+                        example: |
+                            ---
+                            id: "sample id"
+                            name: "sample name"
+                            tags:
+                            - "sample tags"
+                            address:
+                              street: "sample street"
+                              zipcode: "sample zipcode"
+                              city: "sample city"
+                    application/xml: 
+                        schema: Company
+                        example: '<Company xmlns=""><id>sample id</id><name>sample name</name><tags>sample tags</tags><address><street>sample street</street><zipcode>sample zipcode</zipcode><city>sample city</city></address></Company>'
+                    text/xml: 
+                        schema: Company
+                        example: '<Company xmlns=""><id>sample id</id><name>sample name</name><tags>sample tags</tags><address><street>sample street</street><zipcode>sample zipcode</zipcode><city>sample city</city></address></Company>'
+        securedBy: 
+            - 
+                HTTP_BASIC
+    delete: 
+        description: Deletes a Company
+        responses: 
+            "200": 
+        securedBy: 
+            - 
+                HTTP_BASIC
+/contacts/: 
+    displayName: ContactList
+    get: 
+        description: Loads a list of Contact
+        queryParameters: 
+            "$sort": 
+                displayName: "$sort"
+                description: "Order in which to retrieve the results. Multiple sort criteria can be passed. Example: sort=age ASC,height DESC"
+                type: string
+                required: false
+                repeat: false
+                example: sample $sort
+            company: 
+                displayName: company
+                description: Allows to filter the collections of result by the value of field company
+                type: string
+                required: false
+                repeat: false
+                example: sample company
+            rank: 
+                displayName: rank
+                description: Allows to filter the collections of result by the value of field rank
+                type: string
+                required: false
+                repeat: false
+                example: sample rank
+            birthday: 
+                displayName: birthday
+                description: Allows to filter the collections of result by the value of field birthday
+                type: string
+                required: false
+                repeat: false
+                example: sample birthday
+            firstName: 
+                displayName: firstName
+                description: Allows to filter the collections of result by the value of field firstName
+                type: string
+                required: false
+                repeat: false
+                example: sample firstName
+            active: 
+                displayName: active
+                description: Allows to filter the collections of result by the value of field active
+                type: string
+                required: false
+                repeat: false
+                example: sample active
+            "$size": 
+                displayName: "$size"
+                description: Size of the page to retrieve. Integer value
+                type: string
+                required: false
+                repeat: false
+                example: sample $size
+            lastName: 
+                displayName: lastName
+                description: Allows to filter the collections of result by the value of field lastName
+                type: string
+                required: false
+                repeat: false
+                example: sample lastName
+            id: 
+                displayName: id
+                description: Allows to filter the collections of result by the value of field id
+                type: string
+                required: false
+                repeat: false
+                example: sample id
+            "$page": 
+                displayName: "$page"
+                description: Number of the page to retrieve. Integer value.
+                type: string
+                required: false
+                repeat: false
+                example: sample $page
+        responses: 
+            "200": 
+                body: 
+                    application/json: 
+                        schema: Contact
+                        example: '[{"id":"sample id","firstName":"sample firstName","lastName":"sample lastName","birthday":123456789,"active":false,"rank":1,"company":"sample company"}]'
+                    application/x-yaml: 
+                        schema: Contact
+                        example: |
+                            ---
+                            - id: "sample id"
+                              firstName: "sample firstName"
+                              lastName: "sample lastName"
+                              birthday: 123456789
+                              active: false
+                              rank: 1
+                              company: "sample company"
+                    application/xml: 
+                        schema: Contact
+                        example: '<SingletonList xmlns=""><item><id>sample id</id><firstName>sample firstName</firstName><lastName>sample lastName</lastName><birthday>123456789</birthday><active>false</active><rank>1</rank><company>sample company</company></item></SingletonList>'
+                    text/xml: 
+                        schema: Contact
+                        example: '<SingletonList xmlns=""><item><id>sample id</id><firstName>sample firstName</firstName><lastName>sample lastName</lastName><birthday>123456789</birthday><active>false</active><rank>1</rank><company>sample company</company></item></SingletonList>'
+            "400": 
+        securedBy: 
+            - 
+                HTTP_BASIC
+    post: 
+        description: Adds a Contact
+        body: 
+            application/json: 
+                schema: Contact
+                example: '{"id":"sample id","firstName":"sample firstName","lastName":"sample lastName","birthday":123456789,"active":false,"rank":1,"company":"sample company"}'
+            application/x-yaml: 
+                schema: Contact
+                example: |
+                    ---
+                    id: "sample id"
+                    firstName: "sample firstName"
+                    lastName: "sample lastName"
+                    birthday: 123456789
+                    active: false
+                    rank: 1
+                    company: "sample company"
+            application/xml: 
+                schema: Contact
+                example: '<Contact xmlns=""><id>sample id</id><firstName>sample firstName</firstName><lastName>sample lastName</lastName><birthday>123456789</birthday><active>false</active><rank>1</rank><company>sample company</company></Contact>'
+            text/xml: 
+                schema: Contact
+                example: '<Contact xmlns=""><id>sample id</id><firstName>sample firstName</firstName><lastName>sample lastName</lastName><birthday>123456789</birthday><active>false</active><rank>1</rank><company>sample company</company></Contact>'
+        responses: 
+            "200": 
+                body: 
+                    application/json: 
+                        schema: Contact
+                        example: '{"id":"sample id","firstName":"sample firstName","lastName":"sample lastName","birthday":123456789,"active":false,"rank":1,"company":"sample company"}'
+                    application/x-yaml: 
+                        schema: Contact
+                        example: |
+                            ---
+                            id: "sample id"
+                            firstName: "sample firstName"
+                            lastName: "sample lastName"
+                            birthday: 123456789
+                            active: false
+                            rank: 1
+                            company: "sample company"
+                    application/xml: 
+                        schema: Contact
+                        example: '<Contact xmlns=""><id>sample id</id><firstName>sample firstName</firstName><lastName>sample lastName</lastName><birthday>123456789</birthday><active>false</active><rank>1</rank><company>sample company</company></Contact>'
+                    text/xml: 
+                        schema: Contact
+                        example: '<Contact xmlns=""><id>sample id</id><firstName>sample firstName</firstName><lastName>sample lastName</lastName><birthday>123456789</birthday><active>false</active><rank>1</rank><company>sample company</company></Contact>'
+        securedBy: 
+            - 
+                HTTP_BASIC
+/contacts/{contactid}: 
+    displayName: Contact
+    uriParameters: 
+        contactid: 
+            displayName: contactid
+            description: Identifier of the Contact
+            type: string
+            required: false
+            repeat: false
+            example: sample contactid
+    get: 
+        description: Loads a Contact
+        responses: 
+            "200": 
+                body: 
+                    application/json: 
+                        schema: Contact
+                        example: '{"id":"sample id","firstName":"sample firstName","lastName":"sample lastName","birthday":123456789,"active":false,"rank":1,"company":"sample company"}'
+                    application/x-yaml: 
+                        schema: Contact
+                        example: |
+                            ---
+                            id: "sample id"
+                            firstName: "sample firstName"
+                            lastName: "sample lastName"
+                            birthday: 123456789
+                            active: false
+                            rank: 1
+                            company: "sample company"
+                    application/xml: 
+                        schema: Contact
+                        example: '<Contact xmlns=""><id>sample id</id><firstName>sample firstName</firstName><lastName>sample lastName</lastName><birthday>123456789</birthday><active>false</active><rank>1</rank><company>sample company</company></Contact>'
+                    text/xml: 
+                        schema: Contact
+                        example: '<Contact xmlns=""><id>sample id</id><firstName>sample firstName</firstName><lastName>sample lastName</lastName><birthday>123456789</birthday><active>false</active><rank>1</rank><company>sample company</company></Contact>'
+            "400": 
+        securedBy: 
+            - 
+                HTTP_BASIC
+    put: 
+        description: Stores a Contact
+        body: 
+            application/json: 
+                schema: Contact
+                example: '{"id":"sample id","firstName":"sample firstName","lastName":"sample lastName","birthday":123456789,"active":false,"rank":1,"company":"sample company"}'
+            application/x-yaml: 
+                schema: Contact
+                example: |
+                    ---
+                    id: "sample id"
+                    firstName: "sample firstName"
+                    lastName: "sample lastName"
+                    birthday: 123456789
+                    active: false
+                    rank: 1
+                    company: "sample company"
+            application/xml: 
+                schema: Contact
+                example: '<Contact xmlns=""><id>sample id</id><firstName>sample firstName</firstName><lastName>sample lastName</lastName><birthday>123456789</birthday><active>false</active><rank>1</rank><company>sample company</company></Contact>'
+            text/xml: 
+                schema: Contact
+                example: '<Contact xmlns=""><id>sample id</id><firstName>sample firstName</firstName><lastName>sample lastName</lastName><birthday>123456789</birthday><active>false</active><rank>1</rank><company>sample company</company></Contact>'
+        responses: 
+            "200": 
+                body: 
+                    application/json: 
+                        schema: Contact
+                        example: '{"id":"sample id","firstName":"sample firstName","lastName":"sample lastName","birthday":123456789,"active":false,"rank":1,"company":"sample company"}'
+                    application/x-yaml: 
+                        schema: Contact
+                        example: |
+                            ---
+                            id: "sample id"
+                            firstName: "sample firstName"
+                            lastName: "sample lastName"
+                            birthday: 123456789
+                            active: false
+                            rank: 1
+                            company: "sample company"
+                    application/xml: 
+                        schema: Contact
+                        example: '<Contact xmlns=""><id>sample id</id><firstName>sample firstName</firstName><lastName>sample lastName</lastName><birthday>123456789</birthday><active>false</active><rank>1</rank><company>sample company</company></Contact>'
+                    text/xml: 
+                        schema: Contact
+                        example: '<Contact xmlns=""><id>sample id</id><firstName>sample firstName</firstName><lastName>sample lastName</lastName><birthday>123456789</birthday><active>false</active><rank>1</rank><company>sample company</company></Contact>'
+        securedBy: 
+            - 
+                HTTP_BASIC
+    delete: 
+        description: Deletes a Contact
+        responses: 
+            "200": 
+        securedBy: 
+            - 
+                HTTP_BASIC
+/files/: 
+    displayName: filesFolder
+    get: 
+        description: Loads the list of files for the folder files
+        responses: 
+            "200": 
+                body: 
+                    application/json: 
+                        schema: FolderListRepresentation
+                        example: '{"list":[]}'
+                    application/x-yaml: 
+                        schema: FolderListRepresentation
+                        example: |
+                            ---
+                            list: []
+                    application/xml: 
+                        schema: FolderListRepresentation
+                        example: '<FolderListRepresentation xmlns=""></FolderListRepresentation>'
+                    text/xml: 
+                        schema: FolderListRepresentation
+                        example: '<FolderListRepresentation xmlns=""></FolderListRepresentation>'
+        securedBy: 
+            - 
+                HTTP_BASIC
+/files/{file}: 
+    displayName: filesFile
+    uriParameters: 
+        file: 
+            displayName: file
+            description: File name
+            type: string
+            required: false
+            repeat: false
+            example: sample file
+    get: 
+        description: Returns a file for the folder files
+        responses: 
+            "200": 
+        securedBy: 
+            - 
+                HTTP_BASIC
+    put: 
+        description: Stores a filesFileRepresentation
+        responses: 
+            "200": 
+        securedBy: 
+            - 
+                HTTP_BASIC
+    delete: 
+        description: Deletes a filesFileRepresentation
+        responses: 
+            "200": 
+        securedBy: 
+            - 
+                HTTP_BASIC
